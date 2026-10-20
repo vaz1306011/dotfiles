@@ -163,7 +163,6 @@ zstyle ':fzf-tab:*' fzf-bindings \
 # fzf
 source <(fzf --zsh)
 
-[ -f "$HOME/.config/broot/launcher/bash/br" ] && source "$HOME/.config/broot/launcher/bash/br"
 {{ if eq .chezmoi.os "darwin" }}
 # Unity CLI
 [ -f "$HOME/.unity/env" ] && . "$HOME/.unity/env"
