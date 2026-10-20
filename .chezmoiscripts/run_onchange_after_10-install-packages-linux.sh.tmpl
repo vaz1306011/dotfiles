@@ -1,7 +1,7 @@
 {{- if eq .chezmoi.os "linux" -}}
 #!/bin/bash
-# Installs the tools the dotfiles rely on. Tools whose apt version is too old
-# (fzf, neovim) or that are not in apt (nvm, uv) come from upstream.
+# Installs the tools the dotfiles rely on. fzf and neovim come from upstream
+# because the apt versions are too old.
 set -euo pipefail
 
 BIN="$HOME/.local/bin"
@@ -16,13 +16,6 @@ esac
 
 # version_ge HAVE NEED: true when HAVE >= NEED
 version_ge() { [ "$(printf '%s\n%s\n' "$2" "$1" | sort -V | head -n1)" = "$2" ]; }
-
-# latest_tag OWNER/REPO: resolve the latest release tag via redirect (no API rate limit)
-latest_tag() {
-  local url
-  url=$(curl -fsSLI -o /dev/null -w '%{url_effective}' "https://github.com/$1/releases/latest")
-  echo "${url##*/}"
-}
 
 # --- apt ---
 APT_PKGS=(git curl zsh tmux tree build-essential gh)
@@ -51,15 +44,5 @@ if ! command -v nvim >/dev/null 2>&1 || ! version_ge "$(nvim --version | head -n
   mv "$tmp"/nvim-linux-* "$HOME/.local/nvim"
   ln -sf "$HOME/.local/nvim/bin/nvim" "$BIN/nvim"
   rm -rf "$tmp"
-fi
-
-# --- nvm (PROFILE=/dev/null keeps the installer from editing shell rc files) ---
-if [ ! -s "$HOME/.nvm/nvm.sh" ]; then
-  curl -fsSL "https://raw.githubusercontent.com/nvm-sh/nvm/$(latest_tag nvm-sh/nvm)/install.sh" | PROFILE=/dev/null bash
-fi
-
-# --- uv ---
-if ! command -v uv >/dev/null 2>&1; then
-  curl -LsSf https://astral.sh/uv/install.sh | UV_NO_MODIFY_PATH=1 sh
 fi
 {{- end }}
