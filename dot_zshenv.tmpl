@@ -1,0 +1,16 @@
+typeset -U path
+
+# PATH
+path=(
+  "$HOME/bin"
+  $path
+)
+
+# Code
+{{- if eq .chezmoi.os "darwin" }}
+export JAVA_HOME=$(/opt/homebrew/bin/brew --prefix openjdk)
+{{- end }}
+export NVM_DIR="$HOME/.nvm"
+
+# uv
+export PATH="$HOME/.local/bin:$PATH"

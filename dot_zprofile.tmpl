@@ -1,10 +1,12 @@
+{{ if eq .chezmoi.os "darwin" -}}
 # The following lines were added by Docker Desktop to add commands to your PATH.
-export PATH="$PATH:/Users/sora/.docker/bin"
+export PATH="$PATH:$HOME/.docker/bin"
 # End of Docker Desktop section.
+{{- end }}
 
 # ----- this section was added by jtBeerHall -----
-export BEERHALL="/Users/sora/BeerHall"
+export BEERHALL="$HOME/BeerHall"
 # ------------------------------- jtBeerHall end -
 
 # Added by swiftly
-. "/Users/sora/.swiftly/env.sh"
+[ -f "$HOME/.swiftly/env.sh" ] && . "$HOME/.swiftly/env.sh"
