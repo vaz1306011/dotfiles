@@ -1,0 +1,20 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = ソラ
+	email = vaz1306011@gmail.com
+[core]
+	editor = code --wait
+[alias]
+	l = log
+	co = checkout
+	ci = commit
+	rb = rebase
+	rs = reset
+	dog = log --all --decorate --oneline --graph
+
+[init]
+	defaultBranch = main

@@ -1,0 +1,55 @@
+{
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.9.5",
+  "schemes" : [
+    {
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "vendorID" : "0x68e",
+          "productName" : "BSK V3 PRO",
+          "productID" : "0xac"
+        }
+      },
+      "scrolling" : {
+        "reverse" : true,
+        "acceleration" : 1,
+        "distance" : 3,
+        "speed" : 0
+      },
+      "pointer" : {
+        "speed" : 0.0689655172413792768,
+        "acceleration" : 1,
+        "disableAcceleration" : true
+      },
+      "buttons" : {
+        "universalBackForward" : true
+      }
+    },
+    {
+      "scrolling" : {
+        "distance" : {
+          "vertical" : "auto"
+        },
+        "acceleration" : {
+          "vertical" : 1
+        },
+        "speed" : {
+          "vertical" : 0
+        }
+      },
+      "pointer" : {
+        "speed" : 0.0689655172413792768,
+        "disableAcceleration" : false,
+        "acceleration" : 0.6875
+      },
+      "if" : {
+        "device" : {
+          "category" : "trackpad",
+          "vendorID" : "0x0",
+          "productID" : "0x0",
+          "productName" : "Apple Internal Keyboard \/ Trackpad"
+        }
+      }
+    }
+  ]
+}
